@@ -13,6 +13,9 @@ int my_printf(char *format_string, char *param){
 			else if (format_string[i] >= 97 && format_string[i] <= 122){
                                 putchar(format_string[i]-32);
                         }
+			else{
+				putchar(format_string[i]);
+			}
 
 	}
 	puts("");
