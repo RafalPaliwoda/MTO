@@ -19,14 +19,40 @@ int my_printf(char *format_string, char *param){
 				for (int x = 0; x < num; x++){
 					tab[x] = format_string[i+1+x];
 				}
+				int z = num;
 			 	num = atoi(tab);
-				if (strlen(format_string) - 1 < num){
-					for (int x = 0; x < num - strlen(format_string) - 1; x++){
+				if (strlen(param) - 1 < num){
+					for (int x = 0; x < num - strlen(param) - 1; x++){
 						printf(" ");
 					}
+					for ( int x = 0; x < num; x++){
+						if (param[x] >= 65 && param[x] <= 90){
+							putchar(param[x]+32);
+						}
+						else if (param[x] >= 97 && param[x]<= 122){
+							putchar(param[x]-32);
+						}
+						else{
+							putchar(param[x]);
+						}
+					}
 				}
-				i+=num;
-				i+=1;
+				else{
+					for ( int x = 0; x < num; x++){
+						if (param[x] >= 65 && param[x] <= 90){
+							putchar(param[x]+32);
+						}
+						else if (param[x] >= 97 && param[x]<= 122){
+							putchar(param[x]-32);
+						}
+						else{
+							putchar(param[x]);
+						}
+					}
+				}
+				printf(" ");
+				i+=z;
+				i+=2;
 			}
 		}else
 			if (format_string[i] >= 65 && format_string[i] <= 90){
