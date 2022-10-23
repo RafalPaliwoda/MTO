@@ -20,13 +20,13 @@ int my_printf(char *format_string, char *param){
 					tab[x] = format_string[i+1+x];
 				}
 			 	num = atoi(tab);
-				if (strlen(format_string) < num){
-					for (int x = 0; x < num - strlen(format_string); x++){
-						putchar(' ');
+				if (strlen(format_string) - 1 < num){
+					for (int x = 0; x < num - strlen(format_string) - 1; x++){
+						printf(" ");
 					}
 				}
 				i+=num;
-				i+=2;
+				i+=1;
 			}
 		}else
 			if (format_string[i] >= 65 && format_string[i] <= 90){
