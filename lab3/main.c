@@ -4,7 +4,6 @@
 int my_printf(char *format_string, char *param){
 	for(int i=0;i<strlen(format_string);i++){
 		if((format_string[i] == '#')){
-			printf("test");
 			if ((format_string[i+1] == '.') && isdigit(format_string[i+2]) && (format_string[i+3] == 'k')){
 				char vartable[5];
 				sprintf(vartable, "%%.%cs", format_string[i+2]);
@@ -13,13 +12,16 @@ int my_printf(char *format_string, char *param){
 			}
 			if (isdigit(format_string[i+1]) != 0){
 				int num = 0;
-				while (format_string[i+num] != 'k'){
+				while (format_string[i+1+num] != 'k'){
 					num++;
 				}
 				char tab[num];
-				strncat(format_string[i+1],tab,num);
-				int x = atoi(tab);
-				printf("%d",x);
+				for (int x = 0; x < num; x++){
+					tab[x] = format_string[i+1+x];
+				}
+			 	num = atoi(tab);
+				i+=num;
+				i+=2; //dodanie K
 			}
 		}else
 			if (format_string[i] >= 65 && format_string[i] <= 90){
