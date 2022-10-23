@@ -3,16 +3,18 @@
 
 int my_printf(char *format_string, char *param){
 	for(int i=0;i<strlen(format_string);i++){
-		if((format_string[i] == '#') && (format_string[i+1] == 'k')){
-			i++;
-			printf("%s",param);
+		if((format_string[i] == '#') && (format_string[i+1] == '.') && (format_string[i+3] == 'k') && isdigit(format_string[i+2])){
+			char vartable[5];
+			sprintf(vartable, "%%.%cs", format_string[i+2]);
+			printf(vartable,param);
+			i+=3;
 		}else
 			if (format_string[i] >= 65 && format_string[i] <= 90){
 				putchar(format_string[i]+32);
 			}
 			else if (format_string[i] >= 97 && format_string[i] <= 122){
-                                putchar(format_string[i]-32);
-                        }
+                putchar(format_string[i]-32);
+            }
 			else{
 				putchar(format_string[i]);
 			}
