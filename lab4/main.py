@@ -10,6 +10,9 @@ def my_printf(format_string,param):
             if format_string[idx] == '#' and format_string[idx+1] == 'k':
                 print(param,end="")
                 shouldDo=False
+            elif format_string[idx] == '#' and format_string[idx+1] == 'g':
+                print(param[::-1], end="")
+                shouldDo=False
             else:
                 print(format_string[idx],end="")
         else:
