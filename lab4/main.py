@@ -12,11 +12,12 @@ def my_printf(format_string,param):
                 shouldDo=False
             elif format_string[idx] == '#' and format_string[idx+1] == 'g':
                 param=int(param)
+                number = param
                 reversed_num = 0
-                while param != 0:
-                    digit = param % 10
+                while number != 0:
+                    digit = number % 10
                     reversed_num = reversed_num * 10 + digit
-                    param //= 10
+                    number //= 10
                 print(reversed_num, end="")
                 shouldDo=False
             else:
