@@ -26,8 +26,7 @@ def my_printf(format_string,param):
                 while text > leng:
                     print("9", end="")
                     leng+=1
-                new_param=""
-                print(new_param[:text],end="")
+                print(param[:text],end="")
                 skip_next=True
                 shouldDo=False
             else:
