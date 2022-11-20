@@ -7,8 +7,18 @@ def my_printf(format_string,param):
     shouldDo=True
     for idx in range(0,len(format_string)):
         if shouldDo:
-            if format_string[idx] == '#' and format_string[idx+1] == 'k':
-                print(param,end="")
+            if format_string[idx] == '%':
+                x=0
+                text=''
+                while True:
+                    if format_string[idx+x] == 'g':
+                        break
+                    str = format_string[idx+x].isdigit()
+                    if str:
+                        text+=format_string[idx+x]
+                    x+=1
+                text = int(text)
+                print(param[text:],end="")
                 shouldDo=False
             else:
                 print(format_string[idx],end="")
