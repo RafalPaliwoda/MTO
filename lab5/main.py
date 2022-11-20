@@ -11,7 +11,7 @@ def my_printf(format_string,param):
             skip_next=False
             continue
         if shouldDo:
-            if format_string[idx] == '%':
+            if format_string[idx] == '#':
                 x=0
                 text=''
                 while True:
