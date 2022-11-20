@@ -26,14 +26,7 @@ def my_printf(format_string,param):
                 while text > leng:
                     print("9", end="")
                     leng+=1
-                new_param=''
-                for sign in param:
-                    sign = int(sign)
-                    sign -= 1
-                    if sign == -1:
-                        sign = 9
-                    sign = str(sign)
-                    new_param += sign
+                new_param=""
                 print(new_param[:text],end="")
                 skip_next=True
                 shouldDo=False
