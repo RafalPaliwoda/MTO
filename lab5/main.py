@@ -5,7 +5,11 @@ import sys
 def my_printf(format_string,param):
     #print(format_string)
     shouldDo=True
+    skip_next=False
     for idx in range(0,len(format_string)):
+        if skip_next:
+            skip_next=False
+            continue
         if shouldDo:
             if format_string[idx] == '%':
                 x=0
@@ -17,10 +21,21 @@ def my_printf(format_string,param):
                     if str:
                         text+=format_string[idx+x]
                     x+=1
-                leng = len(text)+2
+                leng = len(param)
                 text = int(text)
-
-                print(param[:text],end="")
+                while text > leng:
+                    print("9", end="")
+                    leng+=1
+                new_param=''
+                for sign in param:
+                    sign = int(sign)
+                    sign -= 1
+                    if sign == -1:
+                        sign = 9
+                    sign = str(sign)
+                    new_param += sign
+                print(new_param[:text],end="")
+                skip_next=True
                 shouldDo=False
             else:
                 print(format_string[idx],end="")
