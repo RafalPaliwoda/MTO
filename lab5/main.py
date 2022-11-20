@@ -17,8 +17,10 @@ def my_printf(format_string,param):
                     if str:
                         text+=format_string[idx+x]
                     x+=1
+                leng = len(text)+2
                 text = int(text)
-                print(param[text:],end="")
+
+                print(param[:text],end="")
                 shouldDo=False
             else:
                 print(format_string[idx],end="")
