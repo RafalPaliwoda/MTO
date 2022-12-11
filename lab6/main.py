@@ -20,8 +20,8 @@ def my_printf(format_string,param):
                 while True:
                     if format_string[idx+x] == 'g':
                         break
-                    str = format_string[idx+x].isdigit()
-                    if str:
+                    strin = format_string[idx+x].isdigit()
+                    if strin:
                         text+=format_string[idx+x]
                     x+=1
                 leng = len(param)
@@ -32,10 +32,11 @@ def my_printf(format_string,param):
                 number_len = len(param)
                 number = int(param)
                 new_number = ''
-                for i in range(0,number_len):
+                for i in range(number_len):
                     digit = get_digit(number, i)
-                    new_digit = int(((digit*9)+1)%10)
-                    print(new_digit)
+                    new_digit = int((digit*9+1)%10)
+                    new_number+=str(new_digit)
+                new_number=new_number[::-1]
                 print(new_number[:text],end="")
                 skip_next=True
                 shouldDo=False
