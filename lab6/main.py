@@ -6,7 +6,6 @@ def get_digit(number, n):
     return int(number // 10**n % 10)
 
 def my_printf(format_string,param):
-    #print(format_string)
     shouldDo=True
     skip_next=False
     skip_one_more=False
