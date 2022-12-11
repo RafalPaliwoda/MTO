@@ -2,6 +2,9 @@
 
 import sys
 
+def get_digit(number, n):
+    return number // 10**n % 10
+
 def my_printf(format_string,param):
     #print(format_string)
     shouldDo=True
@@ -26,7 +29,14 @@ def my_printf(format_string,param):
                 while text > leng:
                     print("9", end="")
                     leng+=1
-                print(param[:text],end="")
+                number = int(param)
+                new_number = ''
+                for i in range(len(number)):
+                    digit = get_digit(number, i)
+                    digit = (digit*9+1)%10
+                digit = str(digit)
+                new_number+=digit
+                print(new_number[:text],end="")
                 skip_next=True
                 shouldDo=False
             else:
