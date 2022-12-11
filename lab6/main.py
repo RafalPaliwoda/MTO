@@ -9,9 +9,14 @@ def my_printf(format_string,param):
     #print(format_string)
     shouldDo=True
     skip_next=False
+    skip_one_more=False
     for idx in range(0,len(format_string)):
         if skip_next:
             skip_next=False
+            skip_one_more=True
+            continue
+        if skip_one_more:
+            skip_one_more=False
             continue
         if shouldDo:
             if format_string[idx] == '#' and format_string[idx+1] == '.':
@@ -27,17 +32,20 @@ def my_printf(format_string,param):
                 leng = len(param)
                 text = int(text)
                 while text > leng:
-                    print("9", end="")
+                    print("0", end="")
                     leng+=1
                 number_len = len(param)
                 number = int(param)
                 new_number = ''
                 for i in range(number_len):
                     digit = get_digit(number, i)
-                    new_digit = int((digit*9+1)%10)
+                    if digit == 0:
+                        digit = 9
+                    else:
+                        new_digit = int((digit*9+1)%10)
                     new_number+=str(new_digit)
                 new_number=new_number[::-1]
-                print(new_number[:text],end="")
+                print(new_number[:text+1],end="")
                 skip_next=True
                 shouldDo=False
             else:
