@@ -19,7 +19,7 @@ def my_printf(format_string,param):
             skip_one_more=False
             continue
         if shouldDo:
-            if format_string[idx] == '#' and format_string[idx+1] == '.':
+            if format_string[idx] == '#' and format_string[idx+1] == '.' and format_string[idx+2].isdigit():
                 x=2
                 text=''
                 while True:
@@ -40,7 +40,7 @@ def my_printf(format_string,param):
                 for i in range(number_len):
                     digit = get_digit(number, i)
                     if digit == 0:
-                        digit = 9
+                        new_digit = 9
                     else:
                         new_digit = int((digit*9+1)%10)
                     new_number+=str(new_digit)
