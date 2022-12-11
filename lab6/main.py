@@ -3,7 +3,7 @@
 import sys
 
 def get_digit(number, n):
-    return number // 10**n % 10
+    return int(number // 10**n % 10)
 
 def my_printf(format_string,param):
     #print(format_string)
@@ -14,8 +14,8 @@ def my_printf(format_string,param):
             skip_next=False
             continue
         if shouldDo:
-            if format_string[idx] == '#':
-                x=0
+            if format_string[idx] == '#' and format_string[idx+1] == '.':
+                x=2
                 text=''
                 while True:
                     if format_string[idx+x] == 'g':
@@ -29,13 +29,13 @@ def my_printf(format_string,param):
                 while text > leng:
                     print("9", end="")
                     leng+=1
+                number_len = len(param)
                 number = int(param)
                 new_number = ''
-                for i in range(len(number)):
+                for i in range(0,number_len):
                     digit = get_digit(number, i)
-                    digit = (digit*9+1)%10
-                digit = str(digit)
-                new_number+=digit
+                    new_digit = int(((digit*9)+1)%10)
+                    print(new_digit)
                 print(new_number[:text],end="")
                 skip_next=True
                 shouldDo=False
