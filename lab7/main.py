@@ -7,8 +7,10 @@ def my_printf(format_string,param):
     shouldDo=True
     for idx in range(0,len(format_string)):
         if shouldDo:
-            if format_string[idx] == '#' and format_string[idx+1] == 'k':
-                print(param,end="")
+            if format_string[idx] == '#' and format_string[idx+1] == 'j':
+                new_text = int(param)
+                new_text = hex(new_text)
+                print(new_text,end="")
                 shouldDo=False
             else:
                 print(format_string[idx],end="")
