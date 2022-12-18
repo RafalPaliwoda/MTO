@@ -8,11 +8,11 @@ def my_printf(format_string,param):
     for idx in range(0,len(format_string)):
         if shouldDo:
             if format_string[idx] == '#' and format_string[idx+1] == 'j':
-                new_text = int(param)
-                new_text = hex(new_text)
-                new_text = str(new_text)
+                param = int(param)
+                hex_param = hex(param)
+                hex_param = str(hex_param)
                 changed_text=''
-                for sign in new_text:
+                for sign in hex_param:
                     if sign == 'a':
                         changed_text+='g'
                     elif sign == 'b':
