@@ -58,7 +58,8 @@ def my_printf(format_string,param):
                 for sign in changed_text:
                     if sign == '0':
                         new_text += 'o'
-                    new_text+=sign
+                    else:
+                        new_text+=sign
                 final_text=''
                 if number > len(new_text):
                     to_add = number - len(new_text)
