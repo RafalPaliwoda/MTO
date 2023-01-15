@@ -7,8 +7,37 @@ def my_printf(format_string,param):
     shouldDo=True
     for idx in range(0,len(format_string)):
         if shouldDo:
-            if format_string[idx] == '#' and format_string[idx+1] == 'k':
-                print(param,end="")
+            if format_string[idx] == '#' and format_string[idx+1] == '.' and format_string[idx+2].isdigit():
+                x=2
+                text=''
+                while True:
+                    if format_string[idx+x] == 'j':
+                        break
+                    strin = format_string[idx+x].isdigit()
+                    if strin:
+                        text+=format_string[idx+x]
+                    x+=1
+                number = int(text)
+                param = int(param)
+                hex_param = hex(param)
+                hex_param = str(hex_param)
+                changed_text=''
+                for sign in hex_param:
+                    if sign == 'a':
+                        changed_text+='g'
+                    elif sign == 'b':
+                        changed_text+='h'
+                    elif sign == 'c':
+                        changed_text+='i'
+                    elif sign == 'd':
+                        changed_text+='j'
+                    elif sign == 'e':
+                        changed_text+='k'
+                    elif sign == 'f':
+                        changed_text+='l'
+                    else:
+                        changed_text+=sign
+                print(changed_text,end="")
                 shouldDo=False
             else:
                 print(format_string[idx],end="")
