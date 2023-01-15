@@ -47,8 +47,13 @@ def my_printf(format_string,param):
                     else:
                         changed_text+=sign
                 changed_text = changed_text[2:]
-                print(number)
-                print(changed_text,end="")
+                final_text=''
+                if number > len(changed_text):
+                    to_add = number - len(changed_text)
+                    for i in range(to_add):
+                        final_text += 'o'
+                final_text += changed_text
+                print(final_text,end="")
                 skip_next=True
                 shouldDo=False
             else:
