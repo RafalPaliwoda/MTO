@@ -7,6 +7,7 @@ def my_printf(format_string,param):
     skip_next=False
     skip_one_more=False
     shouldDo=True
+    skip=False
     for idx in range(0,len(format_string)):
         if skip_next:
             skip_next=False
@@ -25,7 +26,13 @@ def my_printf(format_string,param):
                     strin = format_string[idx+x].isdigit()
                     if strin:
                         text+=format_string[idx+x]
+                    else:
+                        skip = True
+                        break
                     x+=1
+                if skip==True:
+                    print(format_string[idx],end="")
+                    continue
                 number = int(text)
                 param = int(param)
                 hex_param = hex(param)
